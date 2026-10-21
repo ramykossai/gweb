@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "segments": [
+    {
+      "slug": "engaged_scroll_50",
+      "name": "Engagés (scroll ≥ 50%)",
+      "description": "Scroll max ≥ 50% ou temps actif ≥ 20s sur 7 jours.",
+      "priority": 20,
+      "active": true,
+      "calc_mode": "batch",
+      "rule": {
+        "any": [
+          {"event": "scroll", "meta": "max_pct", "gte": 50, "within_days": 7},
+          {"event": "engage", "meta": "active_ms", "gte": 20000, "within_days": 7}
+        ],
+        "score": {"base": 60, "cap": 100}
+      }
+    },
+    {
+      "slug": "form_starters_open",
+      "name": "Formulaires démarrés (ouverts)",
+      "description": "form_start sans lead sur 7 jours.",
+      "priority": 30,
+      "active": true,
+      "calc_mode": "batch",
+      "rule": {
+        "all": [
+          {"event": "form_start", "within_days": 7},
+          {"not": {"event": "lead", "within_days": 7}}
+        ],
+        "score": {"base": 70, "cap": 100}
+      }
+    },
+    {
+      "slug": "high_intent",
+      "name": "Haute intention",
+      "description": "≥2 CTA, ou (form_start + scroll≥75), ou ≥2 page_view sur chemins distincts / 24h.",
+      "priority": 10,
+      "active": true,
+      "calc_mode": "batch",
+      "rule": {
+        "any": [
+          {"event": "cta_click", "count_gte": 2, "within_days": 7},
+          {
+            "all": [
+              {"event": "form_start", "within_days": 7},
+              {"event": "scroll", "meta": "max_pct", "gte": 75, "within_days": 7}
+            ]
+          },
+          {"event": "page_view", "count_gte": 2, "distinct_url": true, "within_days": 1}
+        ],
+        "score": {"base": 80, "boost_event": "cta_click", "boost": 5, "cap": 100}
+      }
+    },
+    {
+      "slug": "low_quality",
+      "name": "Faible qualité / bots",
+      "description": "UA suspects (même heuristique que le filtre humains du dashboard) ou event quality bot_score/webdriver.",
+      "priority": 5,
+      "active": true,
+      "calc_mode": "batch",
+      "rule": {
+        "any": [
+          {"click_field": "user_agent", "is_bot_ua": true},
+          {"event": "quality", "meta": "bot_score", "gte": 70, "within_days": 30},
+          {"event": "quality", "meta": "webdriver", "eq": true, "within_days": 30}
+        ],
+        "score": {"base": 90, "cap": 100}
+      }
+    },
+    {
+      "slug": "geo_tn",
+      "name": "Géo Tunisie (TN)",
+      "description": "Clicks avec geo_iso = TN (IP MaxMind).",
+      "priority": 40,
+      "active": true,
+      "calc_mode": "batch",
+      "rule": {
+        "all": [
+          {"click_field": "geo_iso", "eq": "TN"}
+        ],
+        "score": {"base": 55, "cap": 100}
+      }
+    },
+    {
+      "slug": "fb_paid",
+      "name": "Trafic Facebook Ads",
+      "description": "utm_source fb/facebook ou fbclid non vide.",
+      "priority": 35,
+      "active": true,
+      "calc_mode": "batch",
+      "rule": {
+        "any": [
+          {"click_field": "utm_source", "in": ["fb", "facebook", "ig", "instagram"]},
+          {"click_field": "fbclid", "not_empty": true}
+        ],
+        "score": {"base": 65, "cap": 100}
+      }
+    },
+    {
+      "slug": "returning_tbclid",
+      "name": "Revenants (tbclid)",
+      "description": "last_seen_at ≥ 24h après created_at (même cookie tbclid).",
+      "priority": 45,
+      "active": true,
+      "calc_mode": "batch",
+      "rule": {
+        "all": [
+          {"click_field": "last_seen_at", "returning_hours": 24}
+        ],
+        "score": {"base": 50, "cap": 100}
+      }
+    },
+    {
+      "slug": "converted_product",
+      "name": "Convertis (lead + produit)",
+      "description": "Lead sur 7j avec product_hint ou offer_slug renseigné.",
+      "priority": 15,
+      "active": true,
+      "calc_mode": "batch",
+      "rule": {
+        "all": [
+          {"event": "lead", "within_days": 7},
+          {
+            "any": [
+              {"click_field": "product_hint", "not_empty": true},
+              {"click_field": "offer_slug", "not_empty": true}
+            ]
+          }
+        ],
+        "score": {"base": 85, "cap": 100}
+      }
+    },
+    {
+      "slug": "meta_referrer",
+      "name": "Referrer Meta (FB/IG)",
+      "description": "ref_host contient facebook / instagram / fb.",
+      "priority": 42,
+      "active": true,
+      "calc_mode": "batch",
+      "rule": {
+        "any": [
+          {"click_field": "ref_host", "contains": "facebook"},
+          {"click_field": "ref_host", "contains": "instagram"},
+          {"click_field": "ref_host", "contains": "fb.com"}
+        ],
+        "score": {"base": 60, "cap": 100}
+      }
+    }
+  ]
+}

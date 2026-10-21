@@ -1,0 +1,440 @@
+/**
+ * HD Catalog Products — admin UI (scoped under .hdcp-wrap).
+ * Slate / teal — aligned with TB Analytics, clean modern panel.
+ */
+
+.hdcp-wrap {
+    --hdcp-bg0: #070b10;
+    --hdcp-bg1: #0e1620;
+    --hdcp-glass: rgba(18, 28, 40, 0.78);
+    --hdcp-line: rgba(120, 170, 195, 0.16);
+    --hdcp-muted: #8aa0b4;
+    --hdcp-text: #e8f0f6;
+    --hdcp-teal: #2ec4b6;
+    --hdcp-teal-dim: rgba(46, 196, 182, 0.14);
+    --hdcp-amber: #e8a838;
+    --hdcp-rose: #e86a6a;
+    --hdcp-ok: #3dba7e;
+    --hdcp-font: "DM Sans", "Segoe UI", system-ui, sans-serif;
+    --hdcp-display: "Syne", "DM Sans", system-ui, sans-serif;
+    max-width: 1280px;
+    margin: 12px 20px 40px 0;
+    padding: 8px 8px 28px;
+    color: var(--hdcp-text);
+    font-family: var(--hdcp-font);
+    font-size: 14px;
+    line-height: 1.45;
+    background:
+        radial-gradient(900px 420px at 8% -10%, rgba(46, 196, 182, 0.14), transparent 55%),
+        radial-gradient(700px 360px at 96% 0%, rgba(74, 163, 217, 0.08), transparent 50%),
+        linear-gradient(175deg, #0c141c 0%, #080e14 60%, #060a0f 100%);
+    border: 1px solid var(--hdcp-line);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.32);
+}
+
+.hdcp-wrap *,
+.hdcp-wrap *::before,
+.hdcp-wrap *::after {
+    box-sizing: border-box;
+}
+
+.hdcp-hero {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 10px 12px 8px;
+    padding: 20px 22px;
+    border: 1px solid var(--hdcp-line);
+    border-radius: 16px;
+    background:
+        linear-gradient(135deg, rgba(46, 196, 182, 0.08), transparent 45%),
+        var(--hdcp-glass);
+}
+
+.hdcp-eyebrow {
+    margin: 0 0 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--hdcp-teal);
+}
+
+.hdcp-eyebrow a {
+    color: var(--hdcp-teal);
+    text-decoration: none;
+}
+
+.hdcp-title {
+    margin: 0;
+    font-family: var(--hdcp-display);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--hdcp-text);
+}
+
+.hdcp-sub {
+    margin: 8px 0 0;
+    color: var(--hdcp-muted);
+    max-width: 52ch;
+}
+
+.hdcp-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.hdcp-inline-form {
+    display: inline;
+    margin: 0;
+}
+
+.hdcp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--hdcp-line);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--hdcp-text);
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.hdcp-btn:hover {
+    border-color: rgba(46, 196, 182, 0.45);
+    background: var(--hdcp-teal-dim);
+    color: var(--hdcp-text);
+}
+
+.hdcp-btn--primary {
+    background: linear-gradient(135deg, rgba(46, 196, 182, 0.9), rgba(46, 196, 182, 0.65));
+    border-color: transparent;
+    color: #041018;
+}
+
+.hdcp-btn--primary:hover {
+    background: linear-gradient(135deg, #3dd4c6, #2ec4b6);
+    color: #041018;
+}
+
+.hdcp-btn--ghost {
+    opacity: 0.85;
+}
+
+.hdcp-btn--danger {
+    border-color: rgba(232, 106, 106, 0.4);
+    color: #ffb4b4;
+}
+
+.hdcp-btn--danger:hover {
+    background: rgba(232, 106, 106, 0.15);
+}
+
+.hdcp-notice {
+    margin: 10px 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--hdcp-line);
+}
+
+.hdcp-notice--ok {
+    background: rgba(61, 186, 126, 0.12);
+    border-color: rgba(61, 186, 126, 0.35);
+    color: #b6f0d0;
+}
+
+.hdcp-stats {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+    margin: 12px;
+}
+
+.hdcp-stat {
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid var(--hdcp-line);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.hdcp-stat--solo {
+    min-width: 140px;
+    align-self: center;
+}
+
+.hdcp-stat__n {
+    display: block;
+    font-family: var(--hdcp-display);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--hdcp-teal);
+    line-height: 1.1;
+}
+
+.hdcp-stat__l {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--hdcp-muted);
+}
+
+.hdcp-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 12px 14px;
+}
+
+.hdcp-search,
+.hdcp-select,
+.hdcp-field input,
+.hdcp-field select,
+.hdcp-field textarea {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid var(--hdcp-line);
+    background: rgba(0, 0, 0, 0.25);
+    color: var(--hdcp-text);
+    font: inherit;
+}
+
+.hdcp-search {
+    flex: 1 1 220px;
+    max-width: 360px;
+}
+
+.hdcp-select {
+    flex: 0 1 180px;
+    width: auto;
+}
+
+.hdcp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+    margin: 0 12px 20px;
+}
+
+.hdcp-card {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid var(--hdcp-line);
+    background: rgba(255, 255, 255, 0.03);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, transform 0.15s, background 0.15s;
+}
+
+.hdcp-card:hover {
+    border-color: rgba(46, 196, 182, 0.4);
+    background: rgba(46, 196, 182, 0.06);
+    transform: translateY(-1px);
+    color: inherit;
+}
+
+.hdcp-card__media {
+    width: 72px;
+    height: 72px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hdcp-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.hdcp-card__ph {
+    font-family: var(--hdcp-display);
+    font-weight: 700;
+    color: var(--hdcp-muted);
+    font-size: 13px;
+}
+
+.hdcp-card__sku {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--hdcp-teal);
+}
+
+.hdcp-card__name {
+    font-weight: 650;
+    margin-top: 2px;
+    line-height: 1.25;
+}
+
+.hdcp-card__prices {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--hdcp-muted);
+}
+
+.hdcp-card__meta {
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--hdcp-muted);
+}
+
+.hdcp-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.hdcp-badge {
+    display: inline-flex;
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 650;
+    letter-spacing: 0.02em;
+    border: 1px solid var(--hdcp-line);
+    color: var(--hdcp-muted);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.hdcp-badge--ok {
+    color: #9aebc8;
+    border-color: rgba(61, 186, 126, 0.35);
+    background: rgba(61, 186, 126, 0.1);
+}
+
+.hdcp-badge--amber {
+    color: #f0d08a;
+    border-color: rgba(232, 168, 56, 0.35);
+    background: rgba(232, 168, 56, 0.1);
+}
+
+.hdcp-badge--muted {
+    opacity: 0.7;
+}
+
+.hdcp-empty {
+    grid-column: 1 / -1;
+    color: var(--hdcp-muted);
+    padding: 24px;
+}
+
+.hdcp-footer-tools {
+    margin: 8px 12px 4px;
+    opacity: 0.8;
+}
+
+.hdcp-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 12px;
+}
+
+.hdcp-panel {
+    padding: 16px 18px 18px;
+    border-radius: 14px;
+    border: 1px solid var(--hdcp-line);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.hdcp-panel h2 {
+    margin: 0 0 14px;
+    font-family: var(--hdcp-display);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.hdcp-field {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.hdcp-field span {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    color: var(--hdcp-muted);
+    font-weight: 600;
+}
+
+.hdcp-help {
+    margin: 0 0 12px;
+    font-size: 12px;
+    color: var(--hdcp-muted);
+}
+
+.hdcp-image-picker {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hdcp-image-preview {
+    width: 100%;
+    min-height: 160px;
+    border-radius: 12px;
+    border: 1px dashed var(--hdcp-line);
+    background: rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--hdcp-muted);
+    overflow: hidden;
+}
+
+.hdcp-image-preview img {
+    max-width: 100%;
+    max-height: 220px;
+    object-fit: contain;
+}
+
+.hdcp-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 4px 12px 16px;
+}
+
+.hdcp-wrap code {
+    font-size: 12px;
+    color: #b7d7e8;
+}
+
+@media (max-width: 900px) {
+    .hdcp-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .hdcp-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .hdcp-wrap {
+        margin: 8px 8px 24px 0;
+    }
+    .hdcp-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+}

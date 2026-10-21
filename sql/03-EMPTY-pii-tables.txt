@@ -1,0 +1,23 @@
+Tables intentionally NOT exported with DATA (remain on VPS only):
+wp_hd_leads
+wp_hd_lead_drafts
+wp_tb_clicks
+wp_tb_events
+wp_tb_audience_members
+wp_tb_segments
+wp_frmt_form_entry
+wp_frmt_form_entry_meta
+wp_frmt_form_reports
+wp_frmt_form_views
+wp_actionscheduler_actions
+wp_actionscheduler_claims
+wp_actionscheduler_groups
+wp_actionscheduler_logs
+wp_comments
+wp_commentmeta
+wp_hostinger_reach_carts
+wp_monsterinsights_cache
+wp_wpfm_backup
+wp_users / wp_usermeta (create fresh admin on deploy)
+
+On deploy: import 01-schema → 02-content → load 04-options via WP-CLI/script.

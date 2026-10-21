@@ -1,0 +1,33 @@
+# Secrets & local env
+.env
+.env.*
+wp-config.php
+wp-config-local.php
+*.pem
+*.ppk
+id_rsa*
+*.key
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Logs & caches (never ship)
+*.log
+error_log
+**/error_log
+**/cache/
+**/litespeed/
+**/.litespeed_cache/
+
+# Local extract artifacts
+_extract/
+*.tgz
+*.tar.gz
+gweb-export*
+
+# Node (if any tooling added later)
+node_modules/

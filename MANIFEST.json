@@ -1,0 +1,6 @@
+{
+  "exported_at": "2026-10-21T17:03:38+00:00",
+  "source": "healthdesire.online",
+  "includes": ["hd-lite theme","mu-plugins","hd-cloak-links","white/","uploads (no cache)","SQL content+schema+selected options"],
+  "excludes_pii": ["wp_hd_leads","wp_tb_*","forminator entries","users passwords","API tokens"]
+}

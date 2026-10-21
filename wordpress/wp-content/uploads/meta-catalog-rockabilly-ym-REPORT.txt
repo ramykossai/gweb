@@ -1,0 +1,32 @@
+Meta Commerce catalog — Rockabilly YM
+==================================================
+Fichier HD xlsx : /home/u504055740/domains/healthdesire.online/public_html/wp-content/uploads/meta-catalog-rockabilly-ym.xlsx
+Fichier HD csv  : /home/u504055740/domains/healthdesire.online/public_html/wp-content/uploads/meta-catalog-rockabilly-ym.csv
+Copie TB xlsx   : /home/u504055740/domains/thebigone.online/public_html/wp-content/uploads/meta-catalog-rockabilly-ym.xlsx
+Copie TB csv    : /home/u504055740/domains/thebigone.online/public_html/wp-content/uploads/meta-catalog-rockabilly-ym.csv
+Nb produits     : 45
+Devise          : MAD (prix unitaire catalogue unit=1)
+Prix min/max    : 15.00 / 139.00 MAD
+Rappel          : colonne id = content_ids CAPI (SKU exact YM*)
+
+SKU sans image catalogue réelle (placeholder logo) : 0
+  (aucun — YM19/YM20 ont image white/product.png)
+
+Variantes item_group_id :
+  YM14-C → group YM14
+  YM14-S → group YM14
+  YM15-C → group YM15
+  YM15-G → group YM15
+  YM27-G → group YM27
+  YM28-2 → group YM28
+  YM29-2 → group YM29
+
+Doublons SKU exclus : YM07 alias (conservé primaire only)
+Titres : content_name CAPI sans préfixe SKU (ex. MinciMax, Night secret)
+Brand  : YM
+Price placeholder 1.00 MAD : uniquement si prix unit=1 absent (aucun cas attendu)
+
+Note images: YM19/YM20 sans attachment catalogue → fallback white/*/images/product.png (images produit réelles, pas logo).
+URLs publiques:
+  https://healthdesire.online/wp-content/uploads/meta-catalog-rockabilly-ym.xlsx
+  https://healthdesire.online/wp-content/uploads/meta-catalog-rockabilly-ym.csv

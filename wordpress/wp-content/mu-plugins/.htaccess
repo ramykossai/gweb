@@ -1,0 +1,16 @@
+# Deny direct HTTP access to MU-plugin PHP/code.
+# Public assets under */assets/ use their own .htaccess (Require all granted) — needed for tb.js.
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+  Deny from all
+</IfModule>
+# Deny direct HTTP access to MU-plugin PHP/code.
+# Public assets under */assets/ use their own .htaccess (Require all granted) — needed for tb.js.
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+  Deny from all
+</IfModule>

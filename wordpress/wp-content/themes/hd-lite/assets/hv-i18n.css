@@ -1,0 +1,245 @@
+/* Herbal Vitaly — language switch + RTL */
+.hv-lang-switch {
+  position: fixed;
+  z-index: 9999;
+  top: max(12px, env(safe-area-inset-top));
+  inset-inline-end: max(12px, env(safe-area-inset-right));
+  display: inline-flex;
+  /* Flags keep the same reading order whatever the page direction. */
+  direction: ltr;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(8, 14, 12, 0.82);
+  border: 1px solid rgba(0, 255, 136, 0.28);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+.hv-lang-switch--nav {
+  position: static;
+  inset: auto;
+  margin-inline-start: 10px;
+  flex-shrink: 0;
+  box-shadow: none;
+}
+
+.hv-lang-btn {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  min-width: 36px;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font: 700 12px/1 Orbitron, Exo 2, Cairo, sans-serif;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.72);
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.hv-lang-btn.is-active {
+  background: #00ff88;
+  color: #04150c;
+}
+
+.hv-lang-btn:focus-visible {
+  outline: 2px solid #00ff88;
+  outline-offset: 2px;
+}
+
+.hv-flag {
+  width: 18px;
+  height: 13px;
+  flex: 0 0 auto;
+  display: block;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+.hv-lang-btn.is-active .hv-flag {
+  box-shadow: 0 0 0 1px rgba(4, 21, 12, 0.35);
+}
+
+/* FR and TN are both 2-letter Latin codes: identical metrics, no per-button tweak. */
+.hv-lang-code {
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+@media (max-width: 380px) {
+  .hv-lang-btn {
+    min-width: 32px;
+    padding: 0 8px;
+    gap: 5px;
+  }
+  .hv-flag {
+    width: 16px;
+    height: 12px;
+  }
+}
+
+/* Between the nav-links breakpoint (860px) and a comfortable width, the navbar
+   copy drops to flags only so the menu never wraps. aria-label keeps it named. */
+@media (min-width: 860px) and (max-width: 1099px) {
+  .hv-lang-switch--nav .hv-lang-code {
+    display: none;
+  }
+  .hv-lang-switch--nav .hv-lang-btn {
+    min-width: 30px;
+    padding: 0 7px;
+  }
+}
+
+/* Sticky switch hidden on very narrow if nav copy exists */
+@media (max-width: 719px) {
+  .hv-lang-switch:not(.hv-lang-switch--nav) {
+    top: auto;
+    bottom: max(16px, env(safe-area-inset-bottom));
+  }
+  body.hd-boutique-body .hv-lang-switch--nav,
+  body:has(.navbar) .hv-lang-switch--nav {
+    display: none;
+  }
+}
+
+@media (min-width: 720px) {
+  body.hd-boutique-body .hv-lang-switch:not(.hv-lang-switch--nav),
+  body:has(.navbar) .hv-lang-switch:not(.hv-lang-switch--nav) {
+    display: none;
+  }
+}
+
+/* RTL layout tweaks */
+html[dir="rtl"] body,
+body.hv-lang-ar {
+  direction: rtl;
+}
+
+html[dir="rtl"] .hv-nav-inner,
+html[dir="rtl"] .nav-inner,
+html[dir="rtl"] .hv-strip-inner,
+html[dir="rtl"] .hv-section-header,
+html[dir="rtl"] .hv-hero-content,
+html[dir="rtl"] .hv-split,
+html[dir="rtl"] .hv-universe,
+html[dir="rtl"] .hv-pillars,
+html[dir="rtl"] .hv-reviews,
+html[dir="rtl"] .hv-cat-menu-inner,
+html[dir="rtl"] .footer-grid,
+html[dir="rtl"] .contact-grid,
+html[dir="rtl"] .commander-box,
+html[dir="rtl"] .hv-trust-grid {
+  direction: rtl;
+}
+
+html[dir="rtl"] .hv-nav-links,
+html[dir="rtl"] .nav-links {
+  direction: rtl;
+}
+
+html[dir="rtl"] .hv-boutique-form,
+html[dir="rtl"] .order-form,
+html[dir="rtl"] .contact-form {
+  text-align: right;
+}
+
+html[dir="rtl"] .hv-boutique-form input,
+html[dir="rtl"] .hv-boutique-form select,
+html[dir="rtl"] .hv-boutique-form textarea,
+html[dir="rtl"] .contact-form input,
+html[dir="rtl"] .contact-form textarea {
+  text-align: right;
+}
+
+html[dir="rtl"] .hv-checklist,
+html[dir="rtl"] .commander-perks,
+html[dir="rtl"] ul {
+  padding-right: 1.2em;
+  padding-left: 0;
+}
+
+html[dir="rtl"] .hv-site-footer-nav ul {
+  padding: 0;
+}
+
+/* Keep LTR for phone numbers / product codes in Arabic mode */
+html[dir="rtl"] [dir="ltr"],
+html[dir="rtl"] input[type="tel"],
+html[dir="rtl"] .hv-logo,
+html[dir="rtl"] .logo,
+html[dir="rtl"] .hd-cust-shell,
+html[dir="rtl"] .hd-account-main,
+html[dir="rtl"] .hv-hero--account {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+html[dir="rtl"] .hv-logo,
+html[dir="rtl"] .logo {
+  display: inline-flex;
+}
+
+/* Arabic typography — Cairo already enqueued on WP; product whites use Exo — cascade OK.
+   Tahoma / Geeza Pro are dropped from the stack: with lang="ar" they map ASCII
+   digits to Arabic-Indic forms via the OpenType "locl" feature. */
+body.hv-lang-ar {
+  font-family: Cairo, "Noto Sans Arabic", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Chiffres occidentaux (0-9) même en arabe.
+   "locl" est la feature OpenType qui substitue 0-9 → ٠١٢٣ quand
+   lang="ar" ; on l'éteint. Les deux propriétés sont héritées,
+   la règle racine suffit donc à couvrir toute la page.
+   ───────────────────────────────────────────────────────────── */
+html[lang="ar"],
+html[dir="rtl"],
+body.hv-lang-ar {
+  font-variant-numeric: lining-nums tabular-nums;
+  -webkit-font-feature-settings: "lnum" 1, "locl" 0;
+  -moz-font-feature-settings: "lnum" 1, "locl" 0;
+  font-feature-settings: "lnum" 1, "locl" 0;
+}
+
+/* Groupes purement numériques : isolés en LTR pour que « 24/7 », « (13) »,
+   « +216 … » ou un compte à rebours ne soient pas réordonnés par le bidi. */
+html[dir="rtl"] .hv-strip-item strong,
+html[dir="rtl"] .hv-cat .hv-section-header h2 small,
+html[dir="rtl"] .hv-universe-item span,
+html[dir="rtl"] .stat-num,
+html[dir="rtl"] .bienfait-num,
+html[dir="rtl"] .step-circle,
+html[dir="rtl"] .hd-offer-timer,
+html[dir="rtl"] .hd-merci-msg__phone,
+html[dir="rtl"] .hv-price,
+html[dir="rtl"] .price,
+html[dir="rtl"] .prix,
+html[dir="rtl"] .old-price,
+html[dir="rtl"] .promo-price,
+html[dir="rtl"] .stock,
+html[dir="rtl"] .countdown,
+html[dir="rtl"] .timer,
+html[dir="rtl"] time,
+html[dir="rtl"] input[type="number"],
+html[dir="rtl"] [data-hv-num] {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-variant-numeric: lining-nums tabular-nums;
+  -webkit-font-feature-settings: "lnum" 1, "locl" 0;
+  font-feature-settings: "lnum" 1, "locl" 0;
+}
+
+body.hv-lang-ar .hv-hero-title,
+body.hv-lang-ar .logo-herbal,
+body.hv-lang-ar .logo-vitality,
+body.hv-lang-ar .hv-logo-herbal,
+body.hv-lang-ar .hv-logo-vitality,
+body.hv-lang-ar .hero-title {
+  font-family: Orbitron, Cairo, sans-serif;
+}

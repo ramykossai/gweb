@@ -1,0 +1,2 @@
+# Avoid 403 when a client resolves /white/burn-fast/ (directory URL from old base href).
+DirectoryIndex site.html

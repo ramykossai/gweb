@@ -1,0 +1,16 @@
+active_plugins
+blogdescription
+blogname
+hd_catalog_products_db_version
+hd_cloak_settings
+hd_native_form_defs
+hd_source_page_map
+page_for_posts
+page_on_front
+permalink_structure
+show_on_front
+stylesheet
+tb_tracker_sample_rate
+template
+timezone_string
+WPLANG

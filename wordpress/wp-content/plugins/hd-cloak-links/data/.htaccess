@@ -1,0 +1,8 @@
+# GeoIP databases and filter data are for local PHP reads only.
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order Allow,Deny
+    Deny from all
+</IfModule>

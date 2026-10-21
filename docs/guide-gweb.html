@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GWEB — Guide & présentation prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0c1118;
+    --panel: #141b26;
+    --line: rgba(120, 200, 180, 0.22);
+    --text: #e8eef6;
+    --muted: #8b9bb0;
+    --accent: #3ddc97;
+    --accent2: #f0a202;
+    --danger: #ff6b6b;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(900px 480px at 15% -10%, rgba(61, 220, 151, 0.14), transparent 55%),
+      radial-gradient(700px 400px at 90% 10%, rgba(240, 162, 2, 0.10), transparent 50%),
+      linear-gradient(180deg, #090d13, var(--bg) 30%, #0a1018);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px 80px; }
+  header.hero {
+    min-height: 88vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 48px 0 56px;
+    border-bottom: 1px solid var(--line);
+  }
+  .brand {
+    font-family: Syne, sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 9vw, 5.5rem);
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    margin: 0 0 18px;
+    background: linear-gradient(105deg, var(--accent), #9af0c8 40%, var(--accent2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .tagline {
+    font-size: 1.2rem; max-width: 36ch; color: var(--muted); margin: 0 0 28px;
+  }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  a.btn {
+    display: inline-block; text-decoration: none;
+    padding: 12px 18px; border-radius: 10px;
+    font-weight: 600; font-size: 0.95rem;
+    border: 1px solid var(--line);
+    color: var(--text); background: rgba(61,220,151,0.08);
+    transition: transform .15s ease, background .15s ease;
+  }
+  a.btn:hover { transform: translateY(-1px); background: rgba(61,220,151,0.16); }
+  a.btn.primary { background: var(--accent); color: #062016; border-color: transparent; }
+  nav.toc {
+    position: sticky; top: 0; z-index: 5;
+    backdrop-filter: blur(10px);
+    background: rgba(12,17,24,0.82);
+    border-bottom: 1px solid var(--line);
+    margin: 0 -22px; padding: 10px 22px;
+    display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.85rem;
+  }
+  nav.toc a { color: var(--muted); text-decoration: none; }
+  nav.toc a:hover { color: var(--accent); }
+  section {
+    padding: 48px 0 24px;
+    border-bottom: 1px solid rgba(139,155,176,0.12);
+  }
+  h2 {
+    font-family: Syne, sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    margin: 0 0 12px; letter-spacing: -0.02em;
+  }
+  h3 { font-family: Syne, sans-serif; font-size: 1.15rem; margin: 28px 0 8px; color: var(--accent); }
+  p.lead { color: var(--muted); max-width: 62ch; margin-top: 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 22px; }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 16px;
+  }
+  .card h4 { margin: 0 0 8px; font-family: Syne, sans-serif; font-size: 1.05rem; }
+  .card p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+  ol.steps, ul.clean { padding-left: 1.2rem; color: var(--muted); }
+  ol.steps li, ul.clean li { margin: 8px 0; }
+  code, .mono {
+    font-family: ui-monospace, "Cascadia Code", monospace;
+    font-size: 0.86em;
+    background: rgba(61,220,151,0.08);
+    padding: 0.1em 0.35em; border-radius: 4px;
+  }
+  .flow {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+    margin: 20px 0; font-size: 0.9rem;
+  }
+  .flow span {
+    background: var(--panel); border: 1px solid var(--line);
+    padding: 8px 12px; border-radius: 999px;
+  }
+  .flow i { color: var(--accent2); font-style: normal; }
+  table {
+    width: 100%; border-collapse: collapse; font-size: 0.92rem; margin-top: 16px;
+  }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid rgba(139,155,176,0.15); }
+  th { color: var(--muted); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 999px;
+    font-size: 0.75rem; font-weight: 600;
+  }
+  .badge.ok { background: rgba(61,220,151,0.15); color: var(--accent); }
+  .badge.warn { background: rgba(240,162,2,0.15); color: var(--accent2); }
+  footer {
+    padding: 36px 0 12px; color: var(--muted); font-size: 0.85rem;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    a.btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="brand">GWEB</div>
+    <p class="tagline">Prototype WordPress pour scaler les funnels ads → LP → lead, avec signal Meta propre et cloaking geo.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#fonctions">Fonctionnalités</a>
+      <a class="btn" href="#parcours">Parcours user</a>
+      <a class="btn" href="#deploy">Déployer</a>
+      <a class="btn" href="../AGENTS.md">Pour les agents</a>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Sommaire">
+    <a href="#quoi">Quoi</a>
+    <a href="#fonctions">Fonctions</a>
+    <a href="#parcours">Parcours</a>
+    <a href="#pixel">Pixel</a>
+    <a href="#data">Data</a>
+    <a href="#deploy">Deploy</a>
+    <a href="#checklist">Checklist</a>
+  </nav>
+
+  <section id="quoi">
+    <h2>Qu’est-ce que GWEB ?</h2>
+    <p class="lead">GWEB est la version documentée et exportable de la stack HealthDesire : un WordPress “funnel-first” prêt à être cloné, déployé et scalé — <strong>sans</strong> les données clients ni les logs tracker.</p>
+    <div class="grid">
+      <div class="card"><h4>Pour les ops</h4><p>Déployer une nouvelle instance avec LPs, boutique, forms et cloak déjà câblés.</p></div>
+      <div class="card"><h4>Pour les ads</h4><p>URLs stables <code>?page_id=</code>, pixel multi-compte nourri, merci = custom conversion.</p></div>
+      <div class="card"><h4>Pour les agents IA</h4><p>Contrat clair dans <code>AGENTS.md</code> : quoi toucher, quoi ne jamais casser.</p></div>
+    </div>
+  </section>
+
+  <section id="fonctions">
+    <h2>Fonctionnalités du prototype</h2>
+    <div class="grid">
+      <div class="card">
+        <h4>Landing pages HD</h4>
+        <p>Template mobile-first, slides, barre offre, CTA sticky, popup lead RTL/FR.</p>
+      </div>
+      <div class="card">
+        <h4>Boutique</h4>
+        <p>Pages produit / catalogue admin liés aux forms et SKU.</p>
+      </div>
+      <div class="card">
+        <h4>Native leads</h4>
+        <p>Stockage WP + envoi Espo + webhook + commentaire tracking vendeur.</p>
+      </div>
+      <div class="card">
+        <h4>Router page_id</h4>
+        <p>Les ads gardent d’anciens IDs ; le site charge la bonne LP WP.</p>
+      </div>
+      <div class="card">
+        <h4>Cloaking</h4>
+        <p>Pays autorisés (ex. MA/DZ/TN), filtrage bots &amp; datacenters.</p>
+      </div>
+      <div class="card">
+        <h4>Tracker sampling</h4>
+        <p>Mesure clicks/events pour CR interne (données hors git).</p>
+      </div>
+      <div class="card">
+        <h4>Pixel Meta propre</h4>
+        <p>1 loader · N init · 1 PageView — primary ads en tête.</p>
+      </div>
+      <div class="card">
+        <h4>White assets</h4>
+        <p>Bibliothèque <code>/white/{produit}/</code> pour créas LP légères.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="parcours">
+    <h2>Parcours utilisateur (ads → lead)</h2>
+    <div class="flow">
+      <span>Click Meta</span><i>→</i>
+      <span>LP routée</span><i>→</i>
+      <span>PageView pixel</span><i>→</i>
+      <span>Popup form</span><i>→</i>
+      <span>Lead Espo</span><i>→</i>
+      <span>Merci / convert</span>
+    </div>
+    <ol class="steps">
+      <li>L’annonce pointe vers <code>https://domaine/?page_id=SOURCE&amp;utm_…</code>.</li>
+      <li>Le router mappe SOURCE → page WP (ex. 2461 → Fire Bowl V4).</li>
+      <li>Le visiteur autorisé (geo) voit la LP + popup ; les bots peuvent être filtrés.</li>
+      <li>À la soumission : lead local + Espo + meta <code>fbp</code>/<code>fbc</code>/<code>fbclid</code>.</li>
+      <li>Redirection merci (custom conversion Meta sur l’URL).</li>
+    </ol>
+  </section>
+
+  <section id="pixel">
+    <h2>Pixel &amp; signal ads</h2>
+    <p class="lead">Même intention que l’ancien empilement de shortcodes Meta, mais sans multiplier les PageViews.</p>
+    <table>
+      <thead><tr><th>Élément</th><th>Contrat GWEB</th><th>État</th></tr></thead>
+      <tbody>
+        <tr><td>Loader fbevents</td><td>Exactement 1</td><td><span class="badge ok">requis</span></td></tr>
+        <tr><td>fbq init</td><td>N pixels, primary first</td><td><span class="badge ok">requis</span></td></tr>
+        <tr><td>PageView</td><td>Exactement 1 par page</td><td><span class="badge ok">requis</span></td></tr>
+        <tr><td>CAPI Rockabilly</td><td>Désactivé (enrich cookies ON)</td><td><span class="badge warn">OFF</span></td></tr>
+        <tr><td>Custom convert</td><td>URL page merci</td><td><span class="badge ok">Meta side</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="data">
+    <h2>Ce qui est dans git / hors git</h2>
+    <div class="grid">
+      <div class="card">
+        <h4>Versionné ✅</h4>
+        <p>Thème, mu-plugins, cloak, white, uploads médias, posts/catalog SQL, options forms/map (sanitized).</p>
+      </div>
+      <div class="card">
+        <h4>VPS only ❌</h4>
+        <p>Leads clients, drafts, clicks/events tracker, logs, tokens CAPI/Espo, mots de passe WP.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="deploy">
+    <h2>Déployer le prototype</h2>
+    <p class="lead">Procédure détaillée : <code>docs/DEPLOY.md</code>. En quatre mouvements :</p>
+    <ol class="steps">
+      <li>Installer WordPress frais + importer <code>sql/01</code> → <code>02</code> → <code>04</code>.</li>
+      <li>Rsync <code>wordpress/wp-content</code> + dossier <code>white/</code>.</li>
+      <li><code>search-replace</code> domaine + flush rewrites + admin neuf.</li>
+      <li>Secrets VPS, smoke test lead + pixel + Espo.</li>
+    </ol>
+  </section>
+
+  <section id="checklist">
+    <h2>Checklist go-live</h2>
+    <ul class="clean">
+      <li>LP ads (<code>page_id</code> source) charge la bonne créa</li>
+      <li>Popup visible, submit → row lead + Espo OK</li>
+      <li>Meta lead contient <code>fbp</code> / <code>fbclid</code></li>
+      <li>Merci charge le pixel (PageView)</li>
+      <li>Cloak : TN/MA/DZ OK ; bot preview géré</li>
+      <li>Aucun dump leads dans le repo</li>
+    </ul>
+  </section>
+
+  <footer>
+    GWEB prototype — export HealthDesire · documentation pour scaling &amp; handoff agents · ouvrir aussi <code>AGENTS.md</code> et <code>README.md</code>.
+  </footer>
+</div>
+</body>
+</html>

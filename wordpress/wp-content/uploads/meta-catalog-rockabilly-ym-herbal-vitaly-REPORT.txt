@@ -1,0 +1,30 @@
+Meta Commerce catalog — Rockabilly YM / Herbal Vitaly
+==================================================
+Fichier HD xlsx : /home/u504055740/domains/healthdesire.online/public_html/wp-content/uploads/meta-catalog-rockabilly-ym-herbal-vitaly.xlsx
+Fichier HD csv  : /home/u504055740/domains/healthdesire.online/public_html/wp-content/uploads/meta-catalog-rockabilly-ym-herbal-vitaly.csv
+Copie TB xlsx   : /home/u504055740/domains/thebigone.online/public_html/wp-content/uploads/meta-catalog-rockabilly-ym-herbal-vitaly.xlsx
+Copie TB csv    : /home/u504055740/domains/thebigone.online/public_html/wp-content/uploads/meta-catalog-rockabilly-ym-herbal-vitaly.csv
+Nb produits     : 45
+Brand           : Herbal Vitaly
+Devise          : MAD (prix unitaire catalogue unit=1)
+Link            : pages boutique canoniques (slug) — PAS de LP / page_id
+Labels LP       : aucun (custom_label_2 = item_group si variante)
+custom_label_0  : SKU
+custom_label_1  : form_key
+Filtre          : TOUS les produits actifs (pas direct-only)
+
+Variantes item_group_id :
+  YM14-C → group YM14
+  YM14-S → group YM14
+  YM15-C → group YM15
+  YM15-G → group YM15
+  YM27-G → group YM27
+  YM28-2 → group YM28
+  YM29-2 → group YM29
+
+Images fallback white/product.png : YM19, YM20
+Doublons SKU exclus : YM07 alias (conservé primaire only)
+
+URLs publiques:
+  https://healthdesire.online/wp-content/uploads/meta-catalog-rockabilly-ym-herbal-vitaly.xlsx
+  https://healthdesire.online/wp-content/uploads/meta-catalog-rockabilly-ym-herbal-vitaly.csv
